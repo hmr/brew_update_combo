@@ -15,7 +15,7 @@ brew update
 echo
 
 t_echo "Outdated formulae are..."
-OUTDATED=$(brew outdated | gwc -l)
+OUTDATED=$(brew outdated --formula | wc -l | sed -e 's/ //g')
 if gtest ${OUTDATED} -eq 0; then
   echo "None."
   echo
@@ -29,7 +29,7 @@ else
 fi
 
 t_echo "Outdated casks are..."
-OUTDATED_CASK=$(brew outdated --cask | gwc -l)
+OUTDATED_CASK=$(brew outdated --cask --greedy | wc -l | sed -e 's/ //g')
 if gtest ${OUTDATED_CASK} -eq 0; then
   echo "None."
   echo
