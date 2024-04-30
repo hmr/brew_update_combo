@@ -51,7 +51,7 @@ else
 fi
 
 if [[ "${OUTDATED}" -ne 0 || "${OUTDATED_CASK}" -ne 0 ]]; then
-  t_echo "Cleaning up old files..."
+  t_echo "Purging unnecessary files...."
   brew cleanup -s
   echo
 fi
