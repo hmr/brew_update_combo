@@ -58,8 +58,11 @@ fi
 
 if [[ -d ${HOMEBREW_CONFDIR} ]]; then
     t_echo "Updating installed package list..."
+		echo "brew list --formula"
     brew list --formula > "${HOMEBREW_CONFDIR}/installed_list_formulae.txt"
+		echo "brew list --casks"
     brew list --casks   > "${HOMEBREW_CONFDIR}/installed_list_casks.txt"
+		echo "brew bundle dump"
     brew bundle dump --force --file "${HOMEBREW_CONFDIR}/Brewfile"
 fi
 
