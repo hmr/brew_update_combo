@@ -8,6 +8,8 @@
 # https://github.com/hmr/brew_update_combo
 
 HOMEBREW_CONFDIR="${XDG_CONFIG_HOME:-${HOME}/.config}/homebrew"
+export HOMEBREW_NO_ASK=1
+export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 
 function t_echo () {
   echo "----------------------------------------"
@@ -51,8 +53,8 @@ else
 fi
 
 if [[ "${OUTDATED}" -ne 0 || "${OUTDATED_CASK}" -ne 0 ]]; then
-  t_echo "Purging unnecessary files...."
-  brew cleanup -s
+  t_echo "Purging cache files...."
+  brew cleanup -s --prune=7
   echo
 fi
 
